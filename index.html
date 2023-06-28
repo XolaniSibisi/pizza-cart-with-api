@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Perfect Pizza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <h1>Perfect Pizza👌</h1>
+    <div class="body" x-data="pizzaCartWithAPIWidget">
+        <div class="intro">
+            <div x-text="message"></div><br>
+            Cart ID: <strong x-text="cartId"></strong>
+
+        <div class="input">
+            Customer Name: <input type="text" x-model="username" placeholder="enter your name">
+        </div>
+
+        Number of pizzas loaded from API: <strong x-text="pizzas.length"></strong>
+        <div>
+            Cart total price: R<strong x-text="cart.total.toFixed(2)"></strong>
+        </div>
+            
+        </div><br>
+    
+        <div>
+        
+            <div x-show="cart.total.toFixed(2)>0" class="cart">
+                <table class="table-auto">
+                    <tr> <td colspan="5">
+                        <div class="aa">
+                            <h2>Cart</h2>
+                        </div>
+                        </td></tr>
+                    <tr>
+                        <th>Flavour</th>
+                        <th>Size</th>
+                        <th>Add or Cancel Order</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+                    
+                    <template x-for="pizza in cart.pizzas">
+                        <tr>
+                            <td x-text="pizza.flavour"></td>
+                            <td x-text="pizza.size"></td>
+                            <td><button x-on:click="add(pizza)">+</button>
+                                <button x-on:click="remove(pizza)">-</button></td>
+                            <td x-text="pizza.qty"></td>
+                            <td x-text="pizza.total.toFixed(2)"></td>
+                        </tr>
+
+                    </template>
+                    <tr>
+                        <td colspan="4">Total</td>
+                        <td>
+                            R<span x-text="cart.total.toFixed(2)"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div x-show="payNow">
+                                <div class="messege" x-text="paymentMessage">Message....</div>
+                                <div class="b1">
+                                    <div>
+                                        <label for="">Enter Amount</label>
+                                        <input class="input" type="number" placeholder="Pay Amount" x-model="paymentAmount">
+                                    </div>
+                                    <div>
+                                        <button  x-on:click="pay" class="btn">
+                                            <img src="images\shopping-cart.png" width="20" alt="">Pay Now</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <td>
+                                <button x-show="!payNow" x-on:click="payNow=true" class="btn5">
+                                    <img src="images\shopping-cart.png" width="20" alt="">Check Out
+                                </button>
+                            </td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="Pizzas1">
+            <template x-for="pizza in cart.pizzas">
+              <div class="Pizza2 small_Pizza ">
+                <div>
+                  <h3 x-text="pizza.flavour"></h3>
+                </div>
+                <img x-bind:src=" pizzaImage(pizza)" alt="pizza" width="50px">
+                <div x-text="pizza.size"></div>
+                <div>
+                  <h3 x-text="pizza.price"></h3>
+                </div>
+                <!-- <button x-on:click="add(pizza)">Buy</button> -->
+                
+                </div>
+            </template>
+        </div>
+                
+        <div class="table">
+            <table>
+                <template x-for="pizza in pizzas">
+                    <tr>
+                        <td>
+                            <img x-bind:src="pizzaImage(pizza)" height="40px" alt="">
+                        </td>
+                        <td x-text="pizza.flavour"></td>
+                        <td x-text="pizza.size"></td>
+                        <td x-text="pizza.price"></td>
+                        <td><button x-on:click="add(pizza)">Buy</button></td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+        
+    </div>
+    <div class="pizza contact_us">
+
+        <h2><i>Contact Details</i></h2>
+
+        Contact us at (035)-905-4356 Twitter<br />
+        /fb<br>
+        /insta<br>
+        info@perfectpizza.co.za
+    </div>
+</body>
+</html>
