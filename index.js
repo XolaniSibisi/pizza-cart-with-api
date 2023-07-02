@@ -42,7 +42,7 @@ document.addEventListener('alpine:init', () => {
         pizzaImage(pizza) {
           return `./images/${pizza.size}.png`
         },
-  
+
         message: 'PLACE YOUR PIZZA ORDER.',
         username:'',
         pizzas: [],
@@ -62,8 +62,11 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/add', params)
             .then(() => {
-              this.message = "Pizza added to the cart"
+              this.message = "Pizza Added To The Cart"
               this.showCart();
+              setTimeout(() => {
+                this.message = 'PLACE YOUR PIZZA ORDER';
+              }, 3000);
             })
             .then(() => {
   
@@ -85,8 +88,11 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/remove', params)
             .then(() => {
-              this.message = "Pizza removed from the cart"
+              this.message = "Pizza Removed From The Cart"
               this.showCart();
+              setTimeout(() => {
+                this.message = 'PLACE YOUR PIZZA ORDER';
+              }, 3000);
             })
             .catch(err => alert(err));
   
@@ -102,13 +108,16 @@ document.addEventListener('alpine:init', () => {
               if (!this.paymentAmount) {
                 this.paymentMessage = 'No amount entered, please enter enough money.'
               }
-              else if (this.paymentAmount >= this.cart.total) {
+              else if(this.username === ''){
+                alert('Please enter your name to place an order')
+              }
+              else if (this.paymentAmount >= this.cart.total && this.username !== "") {
                 this.paymentMessage = 'Payment Sucessfully!'
-                this.message= this.username  +" , paid for the pizza(s)!"
+                this.message= this.username  +" paid for the pizza(s)!"
                 setTimeout(() => {
                   this.cart.total = 0
                   window.location.reload()
-                }, 9000);
+                }, 7000);
   
               } else if (this.paymentAmount < this.cart.total) {
                 this.paymentMessage = 'Insufficient Amount Entered.'
