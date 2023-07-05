@@ -52,6 +52,7 @@ document.addEventListener('alpine:init', () => {
         paymentMessage: '',
         payNow: false,
         paymentAmount: 0,
+        change: 0,
   
         add(pizza) {
           const params = {
@@ -105,14 +106,19 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/pay', params)
             .then(() => {
-              if (!this.paymentAmount) {
-                this.paymentMessage = 'No amount entered, please enter enough money.'
-              }
-              else if(this.username === ''){
+
+              if(this.username === ''){
                 alert('Please enter your name to place an order')
+              }
+              else if (!this.paymentAmount) {
+                this.paymentMessage = 'No amount entered, please enter enough money.'
+                setTimeout(() => {
+                  this.paymentMessage = '';
+                }, 4000);
               }
               else if (this.paymentAmount >= this.cart.total && this.username !== "") {
                 this.paymentMessage = 'Payment Sucessfully!'
+                this.change = this.paymentAmount - this.cart.total;
                 this.message= this.username  +" paid for the pizza(s)!"
                 setTimeout(() => {
                   this.cart.total = 0
@@ -121,6 +127,9 @@ document.addEventListener('alpine:init', () => {
   
               } else if (this.paymentAmount < this.cart.total) {
                 this.paymentMessage = 'Insufficient Amount Entered.'
+                setTimeout(() => {
+                  this.paymentMessage = '';
+                }, 4000);
               }
   
             })

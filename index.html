@@ -28,6 +28,18 @@
         </div>
         </div><br>
 
+        <div class="header">
+            <div class="main">
+
+                <button class="btnopen" x-on:click="showCart()">
+                <img src="images\shopping-cart.png" width="30px" alt="">ViewCart</button>
+
+            </div>
+        </div>
+            <div class="cart" x-show="showCart()">
+                <button class="btn6" x-on:click="showCart()=false">
+                    <img src="images\shopping-cart.png" width="30" alt="">Close Cart </button>
+
         <div>
         
             <div x-show="cart.total.toFixed(2)>0" class="pizzas1 cart">
@@ -71,10 +83,11 @@
                                         <label for="">Enter Amount</label>
                                         <input class="input" type="number" placeholder="Pay Amount" x-model="paymentAmount">
                                     </div><br>
+                                    Your change is: R<div x-show="change>0" class="messege1" x-text="change.toFixed(2)"></div><br>
                                     <div>
                                         <button  x-on:click="pay" class="btn">
                                             <img src="images\shopping-cart.png" width="20" alt="">Pay Now</button>
-                                    </div>
+                                    </div><br>
 
                                 </div>
                             </div>
@@ -89,6 +102,7 @@
                 </table>
             </div>
         </div>
+            </div>
                 
         <div class="pizzas1 table">
             <table>
