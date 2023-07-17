@@ -2,17 +2,6 @@ body{
     background-color: #3a86ff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.main{
-    flex: 1;
-    margin: auto;
-    display: flex;
-    }
-    .btnopen{
-        color: black;
-        background-color: white;
-        width: 85px;
-        border-radius: 0.5em;
-    }
 
 .intro{
     background-color: #ffbe0b;
@@ -41,6 +30,7 @@ input{
     background-color: white;
     width: 50%;
     display: inline;
+    margin: 0.5em;
 }
 .btnopen{
     color: black;
@@ -106,10 +96,32 @@ h2{
     background-color: #fb5607;
     flex: 1;
 }
+.pizza{
+    /*BoxModel*/
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 0.5em;
+    flex: 1;
+}
+
+.large_pizza{
+    background-color: #8338ec;
+}
+.medium_pizza{
+    background-color: #ff006e;
+}
+.small_pizza{
+    background-color: #fb5607;
+}
 
 @media (min-width: 768px) {
     .pizzas1{
         display: flex;
+    }
+    .pizzas{
+        display:flex;
     }
     
 }

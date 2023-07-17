@@ -12,19 +12,19 @@
 </head>
 
 <body>
-    <h1>Perfect Pizza👌</h1>
+    <h1>Perfect Pizza Store👌</h1>
     <div class="body" x-data="pizzaCartWithAPIWidget">
         <div class="intro">
             <div style="text-align: center;" x-text="message"></div><br>
-            Order ID: <strong x-text="cartId"></strong>
+            Order ID: <span x-text="cartId"></span>
 
         <div class="input">
             Customer Name: <input type="text" x-model="username" placeholder="enter your name">
         </div>
 
-        Number of Pizza Flavours Available: <strong x-text="pizzas.length"></strong>
+        Number of Pizza Flavours Available: <span x-text="pizzas.length"></span>
         <div>
-            Cart Total Price: R<strong x-text="cart.total.toFixed(2)"></strong>
+            Cart Total Price: R<spa x-text="cart.total.toFixed(2)"></span>
         </div>
         </div><br>
 
@@ -90,6 +90,40 @@
                 </table>
             </div>
         </div>
+
+        <div class="pizzas">
+                
+            <div class="pizza small_pizza">
+                <h2><i>Small Pizza</i></h2>
+                <img src="images\small.png" width="100" alt=""><br>
+                <h3><strong>R49.99</strong></h3>
+                <div>
+                    <i>Small pizza with 3 toppings, 1 meat topping, 3 or less other toppings.</i>
+                </div><br>
+                <button class="btn" x-on:click="">BUY</button>
+            </div>
+
+            <div class="pizza medium_pizza">
+                <h2><i>Medium Pizza</i></h2>
+                <img src="images\medium.png" width="125" alt="">
+                <h3><strong>R89.99</strong></h3>
+                <div>
+                    <i>Medium Mushroom Margherita pizza with 3 toppings max, 2 or less meat toppings, 3 or less other
+                        toppings.</i>
+                </div><br>
+                <button class="btn" x-on:click="">BUY</button>
+            </div>
+
+            <div class="pizza large_pizza">
+                <h2><i>Large Pizza</i></h2>
+                <img src="images\small.png" width="150" alt="">
+                <h3><strong>R149.99</strong></h3>
+                <div>
+                    <i>Large Mushroom Margherita pizza with 3 toppings max, 3 meat toppings, 3 or less other toppings.</i>
+                </div><br>
+                <button class="btn" x-on:click="">BUY</button>
+            </div>
+        </div>
                 
         <div class="pizzas1 table">
             <table>
@@ -103,7 +137,7 @@
                 <template x-for="pizza in pizzas">
                     <tr>
                         <td>
-                            <img x-bind:src="pizzaImage(pizza)" height="40px" alt="">
+                            <img x-bind:src="pizzaImage(pizza)" height="50px" alt="pizza">
                         </td>
                         <td x-text="pizza.flavour"></td>
                         <td x-text="pizza.size"></td>

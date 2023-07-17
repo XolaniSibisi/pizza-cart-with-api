@@ -17,16 +17,31 @@ document.addEventListener('alpine:init', () => {
         },
         featuredPizzas() {
           return axios
-            .get('https://pizza-api.projectcodex.net/api/pizzas/featured')
+            .get(`https://pizza-api.projectcodex.net/api/pizzas/featured/username=${this.username}`)
+            .then((result) => {
+              this.featuredpizzas = result.data.featuredpizzas
+            })
+            .then(() => {
+              return this.createCart();
+            })
+            .then(() => {
+              return this.showCart();
+            })
+           
         },
         postfeaturedPizzas() {
           return axios
-            .post('https://pizza-api.projectcodex.net/api/pizzas/featured')
+            .post('https://pizza-api.projectcodex.net/api/pizzas/featured',
+            
+            {
+              "username" : this.username,
+              "pizza_id" : pizza_id
+            })
         },
   
         createCart() {
           return axios
-            .get('https://pizza-api.projectcodex.net/api/pizza-cart/create?username='+ this.username)
+            .get(`https://pizza-api.projectcodex.net/api/pizza-cart/create?username=${this.username}`)
         },
   
         showCart() {
@@ -63,7 +78,7 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/add', params)
             .then(() => {
-              this.message = "Pizza Added To The Cart"
+              this.message = "Pizza added to the cart"
               this.showCart();
               setTimeout(() => {
                 this.message = 'PLACE YOUR PIZZA ORDER';
@@ -80,6 +95,14 @@ document.addEventListener('alpine:init', () => {
             .catch(err => alert(err));
   
         },
+        buySmall(pizza){
+          const params = {
+            cart_code: this.cartId,
+            pizza_id: pizza.id
+          }
+
+          return this.add(pizza);
+        },
         remove(pizza) {
           const params = {
             cart_code: this.cartId,
@@ -89,7 +112,7 @@ document.addEventListener('alpine:init', () => {
           axios
             .post('https://pizza-api.projectcodex.net/api/pizza-cart/remove', params)
             .then(() => {
-              this.message = "Pizza Removed From The Cart"
+              this.message = "Pizza removed from the cart"
               this.showCart();
               setTimeout(() => {
                 this.message = 'PLACE YOUR PIZZA ORDER';
@@ -117,7 +140,7 @@ document.addEventListener('alpine:init', () => {
                 }, 4000);
               }
               else if (this.paymentAmount >= this.cart.total && this.username !== "") {
-                this.paymentMessage = 'Payment Sucessfully!'
+                this.paymentMessage = 'Payment received!'
                 this.change = this.paymentAmount - this.cart.total;
                 this.message= this.username  +" paid for the pizza(s)!"
                 setTimeout(() => {
