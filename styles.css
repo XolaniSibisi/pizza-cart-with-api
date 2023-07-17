@@ -88,12 +88,12 @@ h2{
     width: 99%;
     margin-top: 1em;
     margin-bottom: 1.5em;
-    background-color: #ff006e;
+    background-color: #fb5607;
     border-radius: 0.5em;
     flex: 1;
 }
 .contact_us{
-    background-color: #fb5607;
+    background-color: white;
     flex: 1;
 }
 .pizza{
@@ -106,14 +106,23 @@ h2{
     flex: 1;
 }
 
-.large_pizza{
-    background-color: #8338ec;
+/* img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+a{
+    text-decoration: none;
 }
-.medium_pizza{
-    background-color: #ff006e;
+
+p{
+    text-align: center;
 }
+
+
 .small_pizza{
-    background-color: #fb5607;
+    background-color:#ff006e;
 }
 
 @media (min-width: 768px) {

@@ -13,19 +13,18 @@ document.addEventListener('alpine:init', () => {
             })
             .then((result) => {
               this.cartId = result.data.cart_code;
-            });
+            })
+
+            .then(() => {
+              return this.featuredPizzas();
+            })
         },
         featuredPizzas() {
           return axios
-            .get(`https://pizza-api.projectcodex.net/api/pizzas/featured/username=${this.username}`)
+            .get('https://pizza-api.projectcodex.net/api/pizzas/featured?username=XolaniSibisi')
             .then((result) => {
-              this.featuredpizzas = result.data.featuredpizzas
-            })
-            .then(() => {
-              return this.createCart();
-            })
-            .then(() => {
-              return this.showCart();
+              this.featuredpizzas = result.data.pizzas
+              // console.log(this.featuredpizzas)
             })
            
         },
@@ -34,8 +33,10 @@ document.addEventListener('alpine:init', () => {
             .post('https://pizza-api.projectcodex.net/api/pizzas/featured',
             
             {
-              "username" : this.username,
-              "pizza_id" : pizza_id
+              "username" : 'XolaniSibisi',
+              "pizza_id" : pizza_id,
+            }).then(() => {
+              this.featuredPizzas()
             })
         },
   
@@ -68,11 +69,12 @@ document.addEventListener('alpine:init', () => {
         payNow: false,
         paymentAmount: 0,
         change: 0,
+        pizza_id: 0,
   
         add(pizza) {
           const params = {
             cart_code: this.cartId,
-            pizza_id: pizza.id
+            pizza_id: pizza.id,
           }
   
           axios
@@ -95,18 +97,11 @@ document.addEventListener('alpine:init', () => {
             .catch(err => alert(err));
   
         },
-        buySmall(pizza){
-          const params = {
-            cart_code: this.cartId,
-            pizza_id: pizza.id
-          }
-
-          return this.add(pizza);
-        },
+        
         remove(pizza) {
           const params = {
             cart_code: this.cartId,
-            pizza_id: pizza.id
+            pizza_id: pizza.id,
           }
   
           axios

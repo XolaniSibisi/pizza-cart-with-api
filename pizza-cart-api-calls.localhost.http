@@ -79,5 +79,5 @@ content-type: application/json
 
 {
 	"username" : "XolaniSibisi",
-	"pizza_id" : 15
+	"pizza_id" : 5
 }

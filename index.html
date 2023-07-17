@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -90,39 +91,17 @@
                 </table>
             </div>
         </div>
-
-        <div class="pizzas">
-                
-            <div class="pizza small_pizza">
-                <h2><i>Small Pizza</i></h2>
-                <img src="images\small.png" width="100" alt=""><br>
-                <h3><strong>R49.99</strong></h3>
-                <div>
-                    <i>Small pizza with 3 toppings, 1 meat topping, 3 or less other toppings.</i>
-                </div><br>
-                <button class="btn" x-on:click="">BUY</button>
-            </div>
-
-            <div class="pizza medium_pizza">
-                <h2><i>Medium Pizza</i></h2>
-                <img src="images\medium.png" width="125" alt="">
-                <h3><strong>R89.99</strong></h3>
-                <div>
-                    <i>Medium Mushroom Margherita pizza with 3 toppings max, 2 or less meat toppings, 3 or less other
-                        toppings.</i>
-                </div><br>
-                <button class="btn" x-on:click="">BUY</button>
-            </div>
-
-            <div class="pizza large_pizza">
-                <h2><i>Large Pizza</i></h2>
-                <img src="images\small.png" width="150" alt="">
-                <h3><strong>R149.99</strong></h3>
-                <div>
-                    <i>Large Mushroom Margherita pizza with 3 toppings max, 3 meat toppings, 3 or less other toppings.</i>
-                </div><br>
-                <button class="btn" x-on:click="">BUY</button>
-            </div>
+        <h2>Feature Pizzas</h2>
+        <div class="pizzas"> 
+            <template x-for="pizza in featuredpizzas">
+                    <div class="pizza small_pizza">
+                        <img x-bind:src="pizzaImage(pizza)" width="150px"><br>
+                        <h4 x-text="pizza.flavour"></h4>
+                        <h4 x-text="pizza.size"></h4>
+                        <h4 x-text="pizza.price"></h4>
+                        <button class="btn" x-on:click="add(pizza)">BUY</button>
+                    </div>
+            </template>
         </div>
                 
         <div class="pizzas1 table">
@@ -137,7 +116,7 @@
                 <template x-for="pizza in pizzas">
                     <tr>
                         <td>
-                            <img x-bind:src="pizzaImage(pizza)" height="50px" alt="pizza">
+                            <img x-bind:src="pizzaImage(pizza)" height="60px" alt="pizza">
                         </td>
                         <td x-text="pizza.flavour"></td>
                         <td x-text="pizza.size"></td>
@@ -152,10 +131,12 @@
     <div class="cart contact_us">
 
         <h2><i>Contact Details</i></h2>
-        Contact us at (035)-905-4356 Twitter<br />
-        /fb<br>
-        /insta<br>
-        info@perfectpizza.co.za
+        <img src="images\telephone.png" alt="" width="20px">  (035)-905-4356<br>
+        <a href=""><img src="images\twitter.png" alt="" width="20px">  thunder_merseyside</a><br>
+        <a href=""><img src="images\facebook.png" alt="" width="20px">  thunder_merseyside</a><br>
+        <a href="https://instausername.com/availability?q=thunder_merseyside"><img src="images\instagram.png" alt="" width="20px">  thunder_merseyside</a><br>
+        <a href="mailto:info@perfectpizza.co.za"><img src="images\gmail.png" alt="" width="20px">  info@perfectpizza.co.za</a>
+        <p>Copyright © 2023 Young Developers Worldwide. All Rights Reserved.</p>
     </div>
 </body>
 </html>
