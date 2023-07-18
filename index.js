@@ -69,7 +69,7 @@ document.addEventListener('alpine:init', () => {
         payNow: false,
         paymentAmount: 0,
         change: 0,
-        pizza_id: 0,
+        viewCart: false,
   
         add(pizza) {
           const params = {

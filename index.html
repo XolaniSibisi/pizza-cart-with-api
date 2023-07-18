@@ -24,14 +24,22 @@
         </div>
 
         Number of Pizza Flavours Available: <span x-text="pizzas.length"></span>
-        <div>
-            Cart Total Price: R<spa x-text="cart.total.toFixed(2)"></span>
-        </div>
         </div><br>
 
+        <div class="header">
+            <div class="main">
+                <div><button class="btnopen" x-on:click="viewCart=true">
+                    <img src="images\shopping-cart.png" width="40px" alt="">ViewCart</button></div>
+                    <div><strong>Cart Total Price: R<span x-text="cart.total.toFixed(2)"></span></strong></span></div>
+
+
+            </div>
+        </div>
+
         <div>
-        
-            <div x-show="cart.total.toFixed(2)>0" class="pizzas1 cart">
+            <div x-show="cart.total.toFixed(2)>0 && viewCart" class="cart">
+                <button class="btnopen" x-on:click="viewCart=false">
+                    <img src="images\shopping-cart.png" width="30" alt="">CloseCart</button>
                 <table class="table-auto">
                     <tr> <td colspan="5">
                         <div class="aa">
