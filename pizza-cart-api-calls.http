@@ -13,7 +13,7 @@ GET https://pizza-api.projectcodex.net/api/pizza-cart/create?username=XolaniSibi
 
 ### Get a cart
 
-GET https://pizza-api.projectcodex.net/api/pizza-cart/J7DS8Dqioo/get
+GET https://pizza-api.projectcodex.net/api/pizza-cart/e4MnralryB/get
 
 ### Add a pizza to the cart
 

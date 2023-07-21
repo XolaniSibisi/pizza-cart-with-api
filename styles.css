@@ -54,6 +54,14 @@ table{
     margin: auto;
     /* flex: 1; */
 }
+
+.histTable{
+    background-color: #ff006e;
+    padding: 1em;
+    margin: auto;
+    margin-bottom: 0.5em;
+
+}
 td{
     text-align: center;
     vertical-align: bottom;
@@ -111,12 +119,6 @@ h2{
     border-radius: 0.5em;
     flex: 1;
 }
-
-/* img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-} */
 
 a{
     text-decoration: none;
