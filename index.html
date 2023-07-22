@@ -21,7 +21,8 @@
                 Username: <input type="text" placeholder="Type username here..." x-model="username">
                 <button type="button" class="logout-button" @click="login" x-show="!cartID">Login</button>
                 <button type="button" class="logout-button" @click="logout" x-show="username && cartID">Logout</button>
-                <button @click="historyPizzas()" x-show="!displayHistory && cartID" class="orderHistory">Order History</button>
+                <button @click="historyPizzas()" x-show="!displayHistory && cartID" class="orderHistory">Order
+                    History</button>
                 <button @click="newOrder()" x-show="displayHistory" class="newOrder">Close Order History</button>
             </div>
             <div x-show="cartID">
@@ -88,8 +89,9 @@
         <div class="header">
             <div class="main">
                 <div x-show="cartID != ''"><button class="btnopen" x-on:click="viewCart=true">
-                    <img src="images\shopping-cart.png" width="40px" alt="">ViewCart</button></div>
-                    <div x-show="cartID != ''"><strong>Cart Total Price: R<span x-text="totalCost"></span></strong></span></div>
+                        <img src="images\shopping-cart.png" width="40px" alt="">ViewCart</button></div>
+                <div x-show="cartID != ''"><strong>Cart Total Price: R<span x-text="totalCost"></span></strong></span>
+                </div>
 
 
             </div>
@@ -100,11 +102,13 @@
                 <button class="btnopen" x-on:click="viewCart=false">
                     <img src="images\shopping-cart.png" width="30" alt="">CloseCart</button>
                 <table class="table-auto">
-                    <tr> <td colspan="5">
-                        <div class="aa">
-                            <h2>Cart</h2>
-                        </div>
-                        </td></tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="aa">
+                                <h2>Cart</h2>
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <th>Flavour</th>
                         <th>Size</th>
@@ -112,13 +116,14 @@
                         <th>Qty</th>
                         <th>Total</th>
                     </tr>
-                    
+
                     <template x-for="pizza in cartPizzas">
                         <tr>
                             <td x-text="pizza.flavour"></td>
                             <td x-text="pizza.size"></td>
                             <td><button x-on:click="add(pizza.id)">+</button>
-                                <button x-on:click="remove(pizza.id)">-</button></td>
+                                <button x-on:click="remove(pizza.id)">-</button>
+                            </td>
                             <td x-text="pizza.qty"></td>
                             <td x-text="pizza.total.toFixed(2)"></td>
                         </tr><br>
@@ -139,37 +144,37 @@
                                         <label for="">Enter Amount</label>
                                         <input class="input" type="number" placeholder="Pay Amount" x-model="money">
                                     </div><br>
-                                    <div class="messege" ></div><br>
+                                    <div class="messege"></div><br>
                                     <div>
-                                        <button  x-on:click="pay" class="btn">
+                                        <button x-on:click="pay" class="btn">
                                             <img src="images\shopping-cart.png" width="20" alt="">Pay Now</button>
                                     </div><br>
 
                                 </div>
                             </div>
-                            
-                            <td>
-                                <button x-show="!payNow" x-on:click="payNow=true" class="btn5">
-                                    <img src="images\shopping-cart.png" width="20" alt="">Check Out
-                                </button>
-                            </td>
+
+                        <td>
+                            <button x-show="!payNow" x-on:click="payNow=true" class="btn5">
+                                <img src="images\shopping-cart.png" width="20" alt="">Check Out
+                            </button>
+                        </td>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="pizzas" x-show="cartID != ''"> 
+        <div class="pizzas" x-show="cartID != ''">
             <template x-for="pizza in featuredpizzas">
-                    <div class="pizza small_pizza">
-                        <img x-bind:src="pizzaImage(pizza)" width="150px"><br><br>
-                        <span>Flavour: </span><strong><span x-text="pizza.flavour"></span></strong><br><br>
-                        <span>Size: </span><strong><span x-text="pizza.size"></span></strong><br><br>
-                        <span>Price: </span><strong>R<span x-text="pizza.price"></span></strong><br><br>
-                        <button class="btn" x-on:click="add(pizza.id)">BUY</button>
-                    </div>
+                <div class="pizza small_pizza">
+                    <img x-bind:src="pizzaImage(pizza)" width="150px"><br><br>
+                    <span>Flavour: </span><strong><span x-text="pizza.flavour"></span></strong><br><br>
+                    <span>Size: </span><strong><span x-text="pizza.size"></span></strong><br><br>
+                    <span>Price: </span><strong>R<span x-text="pizza.price"></span></strong><br><br>
+                    <button class="btn" x-on:click="add(pizza.id)">BUY</button>
+                </div>
             </template>
         </div>
-                
+
         <div class="pizzas1 table" x-show="cartID != ''">
             <table>
                 <tr>
@@ -196,14 +201,17 @@
         <div class="cart contact_us" x-show="cartID != ''">
 
             <h2><i>Contact Details</i></h2>
-            <img src="images\telephone.png" alt="" width="20px">  (035)-905-4356<br>
-            <a href=""><img src="images\twitter.png" alt="" width="20px">  perfectpizza</a><br>
-            <a href=""><img src="images\facebook.png" alt="" width="20px">  perfectpizza</a><br>
-            <a href="https://instausername.com/availability?q=thunder_merseyside"><img src="images\instagram.png" alt="" width="20px">  perfectpizza</a><br>
-            <a href="mailto:info@perfectpizza.co.za"><img src="images\gmail.png" alt="" width="20px">  info@perfectpizza.co.za</a>
+            <img src="images\telephone.png" alt="" width="20px"> (035)-905-4356<br>
+            <a href=""><img src="images\twitter.png" alt="" width="20px"> perfectpizza</a><br>
+            <a href=""><img src="images\facebook.png" alt="" width="20px"> perfectpizza</a><br>
+            <a href="https://instausername.com/availability?q=thunder_merseyside"><img src="images\instagram.png" alt=""
+                    width="20px"> perfectpizza</a><br>
+            <a href="mailto:info@perfectpizza.co.za"><img src="images\gmail.png" alt="" width="20px">
+                info@perfectpizza.co.za</a>
             <p>Copyright © 2023 Young Developers Worldwide. All Rights Reserved.</p>
         </div>
-        
+
     </div>
 </body>
+
 </html>

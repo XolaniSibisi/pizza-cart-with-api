@@ -1,103 +1,116 @@
-body{
+body {
     background-color: #3a86ff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.intro{
+.intro {
     background-color: #ffbe0b;
     border-radius: 0.5em;
     font-size: large;
-    /* font-weight: bold; */
 }
 
-.main{
+.main {
     flex: 1;
     margin: auto;
     display: flex;
-    }
+}
 
-input{
+input {
     width: 18%;
 }
-.btn{
+
+.btn {
     margin: 0.5em;
 }
 
-.input > input[type="text"]{
+.input>input[type="text"] {
     padding: 0.5em;
     margin: 0.5em;
 }
 
-.messege{
+.messege {
     color: green;
     background-color: white;
 }
-.messege1{
+
+.messege1 {
     background-color: white;
     width: 50%;
     display: inline;
     margin: 0.5em;
 }
-.btnopen{
+
+.btnopen {
     color: black;
     background-color: white;
     width: 85px;
     border-radius: 0.5em;
 }
-.cart-box{
+
+.cart-box {
     display: inline;
     background-color: blueviolet;
 }
-table{
+
+table {
     border-collapse: collapse;
     width: 90%;
     margin: auto;
     /* flex: 1; */
 }
 
-.histTable{
+.histTable {
     background-color: #ff006e;
     padding: 1em;
     margin: auto;
     margin-bottom: 0.5em;
 
 }
-td{
+
+td {
     text-align: center;
     vertical-align: bottom;
 }
-th, td{
+
+th,
+td {
     text-align: center;
     border: 1px solid black;
     padding: 15px;
 }
-.a1{
+
+.a1 {
     flex: 1;
     margin: auto;
     display: flex;
 }
-.a2{
+
+.a2 {
     margin: 1em;
     padding: 1em;
 }
-.aa{
+
+.aa {
     margin-left: 50%;
     display: flex;
 }
-h1{
+
+h1 {
     text-align: center;
 }
 
-h2{
+h2 {
     text-align: center;
 }
-.table{
+
+.table {
     background-color: #8338ec;
     border-radius: 0.5em;
     padding: 0.5em;
     flex: 1;
 }
-.cart{
+
+.cart {
     padding: 0.5em;
     width: 99%;
     margin-top: 1em;
@@ -106,11 +119,13 @@ h2{
     border-radius: 0.5em;
     flex: 1;
 }
-.contact_us{
+
+.contact_us {
     background-color: white;
     flex: 1;
 }
-.pizza{
+
+.pizza {
     /*BoxModel*/
     border: 1px solid black;
     padding: 1em;
@@ -120,25 +135,26 @@ h2{
     flex: 1;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-p{
+p {
     text-align: center;
 }
 
 
-.small_pizza{
-    background-color:#ff006e;
+.small_pizza {
+    background-color: #ff006e;
 }
 
 @media (min-width: 768px) {
-    .pizzas1{
+    .pizzas1 {
         display: flex;
     }
-    .pizzas{
-        display:flex;
+
+    .pizzas {
+        display: flex;
     }
-    
+
 }
